@@ -5,9 +5,27 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: olivedrab;
+  background-size: 100%;
+  min-height: 100%;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+form {
+  padding: 20px;
+  margin: 20px;
+  border-radius: 10px;
+}
+form h5{
+  margin: 20px;
+}
+form input[type=submit]{
+border-radius: 5px;}
+
+/* input[type=text]:not(.browser-default):focus:not([readonly]),
+input[type=email]:not(.browser-default):focus:not([readonly]),
+input[type=password]:not(.browser-default):focus:not([readonly]) */
