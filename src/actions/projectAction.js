@@ -1,20 +1,22 @@
 import firebase from "../config/firebaseConfig";
 
 const createProject = (project) =>{
-    console.log(project);
     return (dispatch, getState, {getFirebase, getFirestore})=>{
-        console.log([{...project,authfirstName:'rahul',
-        authlastName:'sharma'}]);
+        const profileFN = getState().firebase.profile.firstName;
+        const profileLN = getState().firebase.profile.lastName;
+        const authId = getState().firebase.auth.uid;
+        console.log(profileLN);
+
         const firestore = getFirestore();
         firestore.collection('project').add({
             ...project,
-            authfirstName:'rahul',
-            authlastName:'sharma',
-            authorId:1234,
+            authfirstName:profileFN,
+            authlastName:profileLN,
+            authorId:authId,
             createdAt: new Date()
-        }).then((project)=>{
+        }).then(()=>{
             console.log("responce")
-            dispatch({type:'CREATE-PROJECT', project});
+            dispatch({type:'CREATED-SUCCESS'});
         }).catch((err)=>{
             console.log("errror")
 

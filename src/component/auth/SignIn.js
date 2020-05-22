@@ -1,6 +1,7 @@
 import React from 'react';
 import signIn from '../../actions/authAction';
-import {connect} from 'react-redux'
+import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom';
 class SignIn extends React.Component{
     constructor(props){
         super(props);
@@ -19,9 +20,11 @@ class SignIn extends React.Component{
         e.target.reset();
     }
     render(){
-        const {authError} = this.props;
-        const {authSuccess} = this.props
-        console.log("hell"+authError);
+        const {authError, auth} = this.props;
+        const {authSuccess} = this.props;
+        if(auth.uid) return <Redirect to="/"></Redirect>
+
+        
         return(
             <div className="container">
                 <form onSubmit={this.formSubmit} className="white">
@@ -50,7 +53,8 @@ const mapsStateToProps = (state) => {
     console.log("SIgnIn" +state)
 return {
     authError:state.auth.authError,
-    authSuccess:state.auth.authDomain
+    authSuccess:state.auth.authDomain,
+    auth:state.firebase.auth
 }
 }
 const mapsDispatchToProps = (dispatch) =>{

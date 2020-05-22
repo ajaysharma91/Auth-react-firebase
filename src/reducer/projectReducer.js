@@ -1,16 +1,12 @@
 
 const initialState = {
-    projects:[
-        {id:1,title:'This is Education Project'},
-        {id:1,title:'This is Medical Project'},
-        {id:1,title:'This is Market Project'},
-    ]
+    result:false
 }
 const projectReducer = (state=initialState, action) =>{
     switch(action.type){
-        case 'CREATE-PROJECT':
-            console.log("Project Created Successfully "+ action.project);
-            return state;
+        case 'CREATED-SUCCESS':
+            console.log("Project Created Successfully ");
+            return {...state, result:true};
         case 'ERROR-CREATE-PROJECT' :
             console.log("Something Error Occurs: "+action.err)  
             return state;
